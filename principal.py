@@ -71,6 +71,187 @@ def imagenesUsac():
     #print(len(train_images), len(train_result), len(test_images), len(test_result))
     return train_images, train_result, test_images, test_result, ["No USAC", "USAC"]
 
+def imagenesLandivar():
+    imagenes = []
+
+
+    contenidoUsac = os.listdir("Imagenes/USAC")
+    # print(len(contenidoUsac))
+    for imagen in contenidoUsac:
+        im = Image.open("Imagenes/USAC/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 0 que representa que si es Usac
+        imagenes.append([ar, 0])
+
+    contenidoLandivar = os.listdir("Imagenes/Landivar")
+    for imagen in contenidoLandivar:
+        im = Image.open("Imagenes/Landivar/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 0 que representa que no es Usac
+        imagenes.append([ar, 1])
+    contenidoMariano = os.listdir("Imagenes/Mariano")
+    for imagen in contenidoMariano:
+        im = Image.open("Imagenes/Mariano/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 0 que representa que no es Usac
+        imagenes.append([ar, 0])
+    contenidoMarroquin = os.listdir("Imagenes/Marroquin")
+    for imagen in contenidoMarroquin:
+        im = Image.open("Imagenes/Marroquin/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 0 que representa que no es Usac
+        imagenes.append([ar, 0])
+
+    # Desordenar las imagenes
+
+    random.shuffle(imagenes)
+
+    # Separar las imagenes de las respuestas
+
+    listaImagenes = []
+    listaRespuestas = []
+    for elemento in imagenes:
+        listaImagenes.append(elemento[0])
+        listaRespuestas.append(elemento[1])
+
+    arregloImagenes = np.array(listaImagenes)
+    arregloRespuestas = np.array(listaRespuestas)
+
+    slice_point = int(arregloImagenes.shape[0] * 0.8)
+
+    train_images = arregloImagenes[0:slice_point]
+    train_result = arregloRespuestas[0:slice_point]
+
+    test_images = arregloImagenes[slice_point:]
+    test_result = arregloRespuestas[slice_point:]
+
+    train_result = train_result.reshape((1, train_result.shape[0]))
+    test_result = test_result.reshape((1, test_result.shape[0]))
+
+    #print(len(train_images), len(train_result), len(test_images), len(test_result))
+    return train_images, train_result, test_images, test_result, ["No Landivar", "Landivar"]
+
+def imagenesMariano():
+    imagenes = []
+
+    # imagenes usac
+    contenidoUsac = os.listdir("Imagenes/USAC")
+    # print(len(contenidoUsac))
+    for imagen in contenidoUsac:
+        im = Image.open("Imagenes/USAC/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 1 que representa que si es Usac
+        imagenes.append([ar, 0])
+
+    # imagenes no usac
+    contenidoLandivar = os.listdir("Imagenes/Landivar")
+    for imagen in contenidoLandivar:
+        im = Image.open("Imagenes/Landivar/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 0 que representa que no es Usac
+        imagenes.append([ar, 0])
+    contenidoMariano = os.listdir("Imagenes/Mariano")
+    for imagen in contenidoMariano:
+        im = Image.open("Imagenes/Mariano/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 0 que representa que no es Usac
+        imagenes.append([ar, 1])
+    contenidoMarroquin = os.listdir("Imagenes/Marroquin")
+    for imagen in contenidoMarroquin:
+        im = Image.open("Imagenes/Marroquin/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 0 que representa que no es Usac
+        imagenes.append([ar, 0])
+
+    # Desordenar las imagenes
+
+    random.shuffle(imagenes)
+
+    # Separar las imagenes de las respuestas
+
+    listaImagenes = []
+    listaRespuestas = []
+    for elemento in imagenes:
+        listaImagenes.append(elemento[0])
+        listaRespuestas.append(elemento[1])
+
+    arregloImagenes = np.array(listaImagenes)
+    arregloRespuestas = np.array(listaRespuestas)
+
+    slice_point = int(arregloImagenes.shape[0] * 0.8)
+
+    train_images = arregloImagenes[0:slice_point]
+    train_result = arregloRespuestas[0:slice_point]
+
+    test_images = arregloImagenes[slice_point:]
+    test_result = arregloRespuestas[slice_point:]
+
+    train_result = train_result.reshape((1, train_result.shape[0]))
+    test_result = test_result.reshape((1, test_result.shape[0]))
+
+    #print(len(train_images), len(train_result), len(test_images), len(test_result))
+    return train_images, train_result, test_images, test_result, ["No Mariano", "Mariano"]
+
+def imagenesMarroquin():
+    imagenes = []
+
+    # imagenes usac
+    contenidoUsac = os.listdir("Imagenes/USAC")
+    # print(len(contenidoUsac))
+    for imagen in contenidoUsac:
+        im = Image.open("Imagenes/USAC/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 1 que representa que si es Usac
+        imagenes.append([ar, 0])
+
+    # imagenes no usac
+    contenidoLandivar = os.listdir("Imagenes/Landivar")
+    for imagen in contenidoLandivar:
+        im = Image.open("Imagenes/Landivar/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 0 que representa que no es Usac
+        imagenes.append([ar, 0])
+    contenidoMariano = os.listdir("Imagenes/Mariano")
+    for imagen in contenidoMariano:
+        im = Image.open("Imagenes/Mariano/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 0 que representa que no es Usac
+        imagenes.append([ar, 0])
+    contenidoMarroquin = os.listdir("Imagenes/Marroquin")
+    for imagen in contenidoMarroquin:
+        im = Image.open("Imagenes/Marroquin/" + imagen)
+        ar = np.asarray(im)
+        # imagen y un 0 que representa que no es Usac
+        imagenes.append([ar, 1])
+
+    # Desordenar las imagenes
+
+    random.shuffle(imagenes)
+
+    # Separar las imagenes de las respuestas
+
+    listaImagenes = []
+    listaRespuestas = []
+    for elemento in imagenes:
+        listaImagenes.append(elemento[0])
+        listaRespuestas.append(elemento[1])
+
+    arregloImagenes = np.array(listaImagenes)
+    arregloRespuestas = np.array(listaRespuestas)
+
+    slice_point = int(arregloImagenes.shape[0] * 0.8)
+
+    train_images = arregloImagenes[0:slice_point]
+    train_result = arregloRespuestas[0:slice_point]
+
+    test_images = arregloImagenes[slice_point:]
+    test_result = arregloRespuestas[slice_point:]
+
+    train_result = train_result.reshape((1, train_result.shape[0]))
+    test_result = test_result.reshape((1, test_result.shape[0]))
+
+    #print(len(train_images), len(train_result), len(test_images), len(test_result))
+    return train_images, train_result, test_images, test_result, ["No Marroquin", "Marroquin"]
 
 def modelosUsac():
     """
@@ -124,7 +305,103 @@ def modelosUsac():
     predecir(img6, model2)
     """
     
+def modelosLandivar():
+    # Cargando conjuntos de datos
+    train_images_orig, train_result, test_images_orig, test_result, classes = imagenesLandivar()
+    # Convertir imagenes a un solo arreglo
+    train_images = train_images_orig.reshape(train_images_orig.shape[0], -1).T
+    test_images = test_images_orig.reshape(test_images_orig.shape[0], -1).T
 
+    # Definir los conjuntos de datos
+    train_set = Data(train_images, train_result, 255)
+    test_set = Data(test_images, test_result, 255)
+    
+    model1 = Model(train_set, test_set, reg=True, alpha=0.0001, lam=300, MAX_ITERATIONS=12000)
+    model1.training()
+    save_object(model1, "Guardar/ModeoloLandivar01.pkl")
+
+    model2 = Model(train_set, test_set, reg=True, alpha=0.0001, lam=150, MAX_ITERATIONS=12000)
+    model2.training()
+    save_object(model2, "Guardar/ModeoloLandivar02.pkl")
+
+    model3 = Model(train_set, test_set, reg=True, alpha=0.00001, lam=300, MAX_ITERATIONS=13000)
+    model3.training()
+    save_object(model3, "Guardar/ModeoloLandivar03.pkl")
+
+    model4 = Model(train_set, test_set, reg=True, alpha=0.00001, lam=150, MAX_ITERATIONS=13000)
+    model4.training()
+    save_object(model4, "Guardar/ModeoloLandivar04.pkl")
+
+
+    model5 = Model(train_set, test_set, reg=True, alpha=0.0001, lam=450, MAX_ITERATIONS=25000)
+    model5.training()
+    save_object(model5, "Guardar/ModeoloLandivar05.pkl")
+
+
+def modelosMariano():
+    # Cargando conjuntos de datos
+    train_images_orig, train_result, test_images_orig, test_result, classes = imagenesMariano()
+    # Convertir imagenes a un solo arreglo
+    train_images = train_images_orig.reshape(train_images_orig.shape[0], -1).T
+    test_images = test_images_orig.reshape(test_images_orig.shape[0], -1).T
+
+    # Definir los conjuntos de datos
+    train_set = Data(train_images, train_result, 255)
+    test_set = Data(test_images, test_result, 255)
+    
+    model1 = Model(train_set, test_set, reg=True, alpha=0.0001, lam=300, MAX_ITERATIONS=12000)
+    model1.training()
+    save_object(model1, "Guardar/ModeoloMariano01.pkl")
+
+    model2 = Model(train_set, test_set, reg=True, alpha=0.0001, lam=150, MAX_ITERATIONS=12000)
+    model2.training()
+    save_object(model2, "Guardar/ModeoloMariano02.pkl")
+
+    model3 = Model(train_set, test_set, reg=True, alpha=0.00001, lam=300, MAX_ITERATIONS=13000)
+    model3.training()
+    save_object(model3, "Guardar/ModeoloMariano03.pkl")
+
+    model4 = Model(train_set, test_set, reg=True, alpha=0.00001, lam=150, MAX_ITERATIONS=13000)
+    model4.training()
+    save_object(model4, "Guardar/ModeoloMariano04.pkl")
+
+
+    model5 = Model(train_set, test_set, reg=True, alpha=0.0001, lam=450, MAX_ITERATIONS=25000)
+    model5.training()
+    save_object(model5, "Guardar/ModeoloMariano05.pkl")
+
+
+def modelosMarroquin():
+    # Cargando conjuntos de datos
+    train_images_orig, train_result, test_images_orig, test_result, classes = imagenesMarroquin()
+    # Convertir imagenes a un solo arreglo
+    train_images = train_images_orig.reshape(train_images_orig.shape[0], -1).T
+    test_images = test_images_orig.reshape(test_images_orig.shape[0], -1).T
+
+    # Definir los conjuntos de datos
+    train_set = Data(train_images, train_result, 255)
+    test_set = Data(test_images, test_result, 255)
+    
+    model1 = Model(train_set, test_set, reg=True, alpha=0.0001, lam=300, MAX_ITERATIONS=12000)
+    model1.training()
+    save_object(model1, "Guardar/ModeoloMarroquin01.pkl")
+
+    model2 = Model(train_set, test_set, reg=True, alpha=0.0001, lam=150, MAX_ITERATIONS=12000)
+    model2.training()
+    save_object(model2, "Guardar/ModeoloMarroquin02.pkl")
+
+    model3 = Model(train_set, test_set, reg=True, alpha=0.00001, lam=300, MAX_ITERATIONS=13000)
+    model3.training()
+    save_object(model3, "Guardar/ModeoloMarroquin03.pkl")
+
+    model4 = Model(train_set, test_set, reg=True, alpha=0.00001, lam=150, MAX_ITERATIONS=13000)
+    model4.training()
+    save_object(model4, "Guardar/ModeoloMarroquin04.pkl")
+
+
+    model5 = Model(train_set, test_set, reg=True, alpha=0.0001, lam=450, MAX_ITERATIONS=25000)
+    model5.training()
+    save_object(model5, "Guardar/ModeoloMarroquin05.pkl")
 
 def datosPrueba(nombre, valor = 0):
     imPrueba = Image.open("Imagenes/Pruebas/" + nombre)
@@ -160,6 +437,29 @@ def cargar(filename):
 
 def cargarModelo():
     modelo = cargar("Guardar/ModeoloUsac01.pkl")
+    print("Entrenamiento:", modelo.train_accuracy, "Prueba:", modelo.test_accuracy, "Iteraciones:", modelo.MAX_ITERATIONS, "reg:", modelo.reg, "Alpha:", modelo.alpha, "Lam:", modelo.lam)
+    modelo = cargar("Guardar/ModeoloUsac02.pkl")
+    print("Entrenamiento:", modelo.train_accuracy, "Prueba:", modelo.test_accuracy, "Iteraciones:", modelo.MAX_ITERATIONS, "reg:", modelo.reg, "Alpha:", modelo.alpha, "Lam:", modelo.lam)
+    modelo = cargar("Guardar/ModeoloUsac03.pkl")
+    print("Entrenamiento:", modelo.train_accuracy, "Prueba:", modelo.test_accuracy, "Iteraciones:", modelo.MAX_ITERATIONS, "reg:", modelo.reg, "Alpha:", modelo.alpha, "Lam:", modelo.lam)
+    modelo = cargar("Guardar/ModeoloUsac04.pkl")
+    print("Entrenamiento:", modelo.train_accuracy, "Prueba:", modelo.test_accuracy, "Iteraciones:", modelo.MAX_ITERATIONS, "reg:", modelo.reg, "Alpha:", modelo.alpha, "Lam:", modelo.lam)
+    modelo = cargar("Guardar/ModeoloUsac05.pkl")
+    print("Entrenamiento:", modelo.train_accuracy, "Prueba:", modelo.test_accuracy, "Iteraciones:", modelo.MAX_ITERATIONS, "reg:", modelo.reg, "Alpha:", modelo.alpha, "Lam:", modelo.lam)
+    modelo = cargar("Guardar/ModeoloUsac06.pkl")
+    print("Entrenamiento:", modelo.train_accuracy, "Prueba:", modelo.test_accuracy, "Iteraciones:", modelo.MAX_ITERATIONS, "reg:", modelo.reg, "Alpha:", modelo.alpha, "Lam:", modelo.lam)
+    modelo = cargar("Guardar/ModeoloUsac07.pkl")
+    print("Entrenamiento:", modelo.train_accuracy, "Prueba:", modelo.test_accuracy, "Iteraciones:", modelo.MAX_ITERATIONS, "reg:", modelo.reg, "Alpha:", modelo.alpha, "Lam:", modelo.lam)
+    modelo = cargar("Guardar/ModeoloUsac08.pkl")
+    print("Entrenamiento:", modelo.train_accuracy, "Prueba:", modelo.test_accuracy, "Iteraciones:", modelo.MAX_ITERATIONS, "reg:", modelo.reg, "Alpha:", modelo.alpha, "Lam:", modelo.lam)
+    modelo = cargar("Guardar/ModeoloUsac09.pkl")
+    print("Entrenamiento:", modelo.train_accuracy, "Prueba:", modelo.test_accuracy, "Iteraciones:", modelo.MAX_ITERATIONS, "reg:", modelo.reg, "Alpha:", modelo.alpha, "Lam:", modelo.lam)
+    modelo = cargar("Guardar/ModeoloUsac10.pkl")
+    print("Entrenamiento:", modelo.train_accuracy, "Prueba:", modelo.test_accuracy, "Iteraciones:", modelo.MAX_ITERATIONS, "reg:", modelo.reg, "Alpha:", modelo.alpha, "Lam:", modelo.lam)
+    modelo = cargar("Guardar/ModeoloUsac11.pkl")
+    print("Entrenamiento:", modelo.train_accuracy, "Prueba:", modelo.test_accuracy, "Iteraciones:", modelo.MAX_ITERATIONS, "reg:", modelo.reg, "Alpha:", modelo.alpha, "Lam:", modelo.lam)
+        
+
     img1 = datosPrueba("USAC_1.jpg", 1)
     predecir(img1, modelo)
     img2 = datosPrueba("USAC_2.jpg", 1)
@@ -176,4 +476,6 @@ def cargarModelo():
     print('Eficacia en entrenamiento: ', modelo.train_accuracy)
     print('Eficacia en prueba: ', modelo.test_accuracy, end='\r\n------------\r\n')
 
-modelosUsac()
+modelosLandivar()
+modelosMariano()
+modelosMarroquin()

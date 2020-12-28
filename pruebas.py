@@ -30,12 +30,17 @@ def cargar(filename):
 
 def pruebaGraficas():
     modelo1 = cargar("Guardar/ModeoloUsac01.pkl")
-    modelo2 = cargar("Guardar/ModeoloUsac07.pkl")
-    modelo3 = cargar("Guardar/ModeoloUsac08.pkl")
-    modelo4 = cargar("Guardar/ModeoloUsac09.pkl")
-    modelo5 = cargar("Guardar/ModeoloUsac10.pkl")
-
-    Plotter.show_Model([modelo1, modelo2, modelo3, modelo4, modelo5])
+    modelo2 = cargar("Guardar/ModeoloUsac02.pkl")
+    modelo3 = cargar("Guardar/ModeoloUsac03.pkl") ## 4
+    modelo4 = cargar("Guardar/ModeoloUsac04.pkl") ## 5
+    modelo5 = cargar("Guardar/ModeoloUsac05.pkl")
+    modelo6 = cargar("Guardar/ModeoloUsac06.pkl")
+    modelo7 = cargar("Guardar/ModeoloUsac07.pkl")
+    modelo8 = cargar("Guardar/ModeoloUsac08.pkl") ## 1 ----- este mejor en pruebas 
+    modelo9 = cargar("Guardar/ModeoloUsac09.pkl") ## 3
+    modelo10 = cargar("Guardar/ModeoloUsac10.pkl") ## 2
+    modelo11 = cargar("Guardar/ModeoloUsac11.pkl")
+    Plotter.show_Model([modelo3, modelo4, modelo8, modelo1, modelo10])
 
 
 pruebaGraficas()
