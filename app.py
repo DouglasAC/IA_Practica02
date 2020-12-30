@@ -21,10 +21,10 @@ def cargar(filename):
         obj = pickle.load(input)
     return obj
 
-modeloUsac = cargar("Guardar/ModeoloUsac08.pkl")
-modeloLandivar = cargar("Guardar/ModeoloLandivar01.pkl")
-modeloMariano = cargar("Guardar/ModeoloUsac03.pkl")
-modeloMarroquin = cargar("Guardar/ModeoloUsac04.pkl")
+modeloUsac = cargar("Guardar/ModeoloUsac12.pkl")
+modeloLandivar = cargar("Guardar/ModeoloLandivar06.pkl")
+modeloMariano = cargar("Guardar/ModeoloMariano06.pkl")
+modeloMarroquin = cargar("Guardar/ModeoloMarroquin06.pkl")
 
 @app.route('/')
 def inicio():
@@ -68,14 +68,15 @@ def cincoomenos():
         if val == 1:
             respuestas.append("Usac")
             continue
-        val = verificarLandivar(dato[0], dato[1])
-        if val == 1:
-            respuestas.append("Landivar")
-            continue
         val = verificarMariano(dato[0], dato[1])
         if val == 1:
             respuestas.append("Mariano")
             continue
+        val = verificarLandivar(dato[0], dato[1])
+        if val == 1:
+            respuestas.append("Landivar")
+            continue
+        
         val = verificarMarroquin(dato[0], dato[1])
         if val == 1:
             respuestas.append("Marroquin")

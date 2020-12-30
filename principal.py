@@ -306,6 +306,7 @@ def modelosUsac():
     """
     
 def modelosLandivar():
+    """
     # Cargando conjuntos de datos
     train_images_orig, train_result, test_images_orig, test_result, classes = imagenesLandivar()
     # Convertir imagenes a un solo arreglo
@@ -331,9 +332,9 @@ def modelosLandivar():
     model4 = Model(train_set, test_set, reg=True, alpha=0.00001, lam=150, MAX_ITERATIONS=13000)
     model4.training()
     save_object(model4, "Guardar/ModeoloLandivar04.pkl")
-
-
-    model5 = Model(train_set, test_set, reg=True, alpha=0.0001, lam=450, MAX_ITERATIONS=25000)
+    """
+    modelo = cargar("Guardar/ModeoloLandivar04.pkl")
+    model5 = Model(modelo.train_set, modelo.test_set, reg=True, alpha=0.0001, lam=450, MAX_ITERATIONS=25000)
     model5.training()
     save_object(model5, "Guardar/ModeoloLandivar05.pkl")
 
@@ -357,11 +358,11 @@ def modelosMariano():
     model2.training()
     save_object(model2, "Guardar/ModeoloMariano02.pkl")
 
-    model3 = Model(train_set, test_set, reg=True, alpha=0.00001, lam=300, MAX_ITERATIONS=13000)
+    model3 = Model(train_set, test_set, reg=True, alpha=0.00001, lam=300, MAX_ITERATIONS=14000)
     model3.training()
     save_object(model3, "Guardar/ModeoloMariano03.pkl")
 
-    model4 = Model(train_set, test_set, reg=True, alpha=0.00001, lam=150, MAX_ITERATIONS=13000)
+    model4 = Model(train_set, test_set, reg=True, alpha=0.00001, lam=150, MAX_ITERATIONS=15000)
     model4.training()
     save_object(model4, "Guardar/ModeoloMariano04.pkl")
 
@@ -476,6 +477,6 @@ def cargarModelo():
     print('Eficacia en entrenamiento: ', modelo.train_accuracy)
     print('Eficacia en prueba: ', modelo.test_accuracy, end='\r\n------------\r\n')
 
-modelosLandivar()
-modelosMariano()
-modelosMarroquin()
+
+cargarModelo()
+
